@@ -1,0 +1,56 @@
+openapi: 3.0.0
+info:
+  version: "0.0.1-SNAPSHOT"
+  title: Api-Leo
+tags:
+  - name: Employees
+    description: "
+      Provides enpoints to view and manage Employees"
+  - name: Departments
+    description: "
+      Provides enpoints to view and manage Departments"
+servers:
+  - url: "http://127.0.0.1:8080/"
+    description: "Local host environment"
+paths:
+  /colaborador/paginacaoa:
+    get:
+      operationId: listarColaboradores
+      tags:
+        - Employees
+      description: Get all employees with pagination type A
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#components/schemas/Colaborador'
+        400:
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ErrorResponse'
+        403:
+          description: The user doesn't have permissions to read
+          content:
+            application/json:
+              schema:
+                $ref: '#components/schemas/ErrorResponse'
+
+components:
+  schema:
+    Colaborador:
+      type: object
+      properties:
+        nome: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+
+#TODO finalize

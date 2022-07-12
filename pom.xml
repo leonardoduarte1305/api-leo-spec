@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>dev.leoduarte</groupId>
+    <artifactId>api-leo-spec</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>api-leo OpenAPI Spec :: Parent</name>
+    <description>api-leo OpenAPI Spec</description>
+    <licenses>
+        <license>
+            <name>dev.leoduarte Software License 1.0</name>
+        </license>
+    </licenses>
+
+    <modules>
+        <module>spec</module>
+        <module>client</module>
+        <module>server</module>
+    </modules>
+
+    <scm>
+        <connection>scm:git:https://github.com/leonardoduarte1305/api-leo-spec.git</connection>
+        <developerConnection>scm:git:git@github.com:leonardoduarte1305/api-leo-spec.git</developerConnection>
+        <url>https://github.com/leonardoduarte1305/api-leo-spec.git</url>
+        <tag>@{project.version</tag>
+    </scm>
+
+    <properties>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.source>UTF-8</project.reporting.source>
+
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+
+        <maven-source-plugin.version>3.2.1</maven-source-plugin.version>
+        <maven-dependency-plugin.version>3.2.1</maven-dependency-plugin.version>
+        <openapi-generator-maven-plugin.version>6.0.0</openapi-generator-maven-plugin.version>
+
+        <spring.version>5.3.21</spring.version>
+        <swagger.version>2.2.1</swagger.version> <!--in the original project is 1.6.6-->
+        <springfox-data-commons.version>2.7.0</springfox-data-commons.version>
+        <slf4j.version>2.0.0-alpha7</slf4j.version>
+        <jackson.version>1.13.3</jackson.version>
+        <javax.validation.api.version>2.0.1.Final</javax.validation.api.version>
+        <javax.servlet.api.version>4.0.1</javax.servlet.api.version>
+        <javax.annotation.version>1.3.2</javax.annotation.version>
+        <openapitools.jackson.nullable.version>0.2.2</openapitools.jackson.nullable.version>
+        <org.codehaus.mojo.tidy.version>1.1.0</org.codehaus.mojo.tidy.version>
+        <com.google.code.jsr305.version>3.0.2</com.google.code.jsr305.version>
+        <assertj-core.version>3.22.0</assertj-core.version>
+
+        <org.junit.jupiter.version>5.8.2</org.junit.jupiter.version>
+        <org.junit.platform.version>1.8.2</org.junit.platform.version>
+
+        <maven.build.indentSize>4</maven.build.indentSize>
+        <maven.deploy.only>false</maven.deploy.only>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>${spring.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.servlet</groupId>
+                <artifactId>javax.servlet-api</artifactId>
+                <version>${javax.servlet.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.validation</groupId>
+                <artifactId>validation-api</artifactId>
+                <version>${javax.validation.api.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>javax.annotation</groupId>
+                <artifactId>javax.annotation-api</artifactId>
+                <version>${javax.annotation.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.openapitools</groupId>
+                <artifactId>jackson-databind-nullable</artifactId>
+                <version>${openapitools.jackson.nullable.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>springfox-data-commons</artifactId>
+                <version>${springfox-data-commons.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.findbugs</groupId>
+                <artifactId>jsr305</artifactId>
+                <version>${com.google.code.jsr305.version}</version>
+                <scope>provided</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.junit.jupiter</groupId>
+                <artifactId>junit-jupiter-engine</artifactId>
+                <version>${org.junit.jupiter.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.assertj</groupId>
+                <artifactId>assertj-core</artifactId>
+                <version>${assertj-core.version}</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-simple</artifactId>
+                <version>${slf4j.version}</version>
+                <scope>test</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven-source-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-dependency-plugin</artifactId>
+                    <version>${maven-dependency-plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.openapitools</groupId>
+                    <artifactId>openapi-generator-maven-plugin</artifactId>
+                    <version>${openapi-generator-maven-plugin.version}</version>
+                    <configuration combine.self="override">
+                        <skip>${maven.deploy.only}</skip>
+                        <strictSpec>true</strictSpec>
+                        <indentSize>${maven.build.indentSize}</indentSize>
+                        <skipValidateSpec>true</skipValidateSpec>
+                        <skipIfSpecIsUnchanged>true</skipIfSpecIsUnchanged>
+                        <output>${project.build.directory}</output>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>tidy-maven-plugin</artifactId>
+                    <version>${org.codehaus.mojo.tidy.version}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>tidy-maven-plugin</artifactId>
+                <version>${org.codehaus.mojo.tidy.version}</version>
+                <executions>
+                    <execution>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>

@@ -1,0 +1,18 @@
+[schema]
+version = 3
+
+[owner]
+team = "Leo Duarte"
+
+[status]
+maturity = "published"
+stage = "Integration tests Environment"
+
+[meta]
+kind = "api_definition"
+labels = ["demo-projects"]
+technologies = ["Swagger", "OpenAPI", "Spring"]
+languages = ["java"]
+
+[build]
+server = "heroku"

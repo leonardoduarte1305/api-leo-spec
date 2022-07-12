@@ -1,0 +1,14 @@
+.env
+*.tgz
+*.iml
+
+/.idea
+/.vscode
+
+**/bin/**
+**/target/**
+**/.project
+**/.settings
+**/.classpath
+**/.factorypath
+**/.attach_pid*
