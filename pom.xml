@@ -41,7 +41,9 @@
         <openapi-generator-maven-plugin.version>6.0.0</openapi-generator-maven-plugin.version>
 
         <spring.version>5.3.21</spring.version>
-        <swagger.version>2.2.1</swagger.version> <!--in the original project is 1.6.6-->
+        <spring-boot-starter.version>2.7.0</spring-boot-starter.version>
+        <swagger.version>1.6.6</swagger.version> <!--in the original project is 1.6.6-->
+        <spring-fox.version>2.9.2</spring-fox.version>
         <springfox-data-commons.version>2.7.0</springfox-data-commons.version>
         <slf4j.version>2.0.0-alpha7</slf4j.version>
         <jackson.version>1.13.3</jackson.version>
@@ -69,11 +71,22 @@
                 <scope>provided</scope>
             </dependency>
 
+<!--            <dependency>-->
+<!--                <groupId>org.springframework</groupId>-->
+<!--                <artifactId>spring-web</artifactId>-->
+<!--                <version>${spring.version}</version>-->
+<!--                <scope>provided</scope>-->
+<!--            </dependency>-->
+
             <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-web</artifactId>
-                <version>${spring.version}</version>
-                <scope>provided</scope>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>${spring-boot-starter.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-jpa</artifactId>
+                <version>${spring-boot-starter.version}</version>
             </dependency>
 
             <dependency>
@@ -128,7 +141,11 @@
                 <artifactId>springfox-data-commons</artifactId>
                 <version>${springfox-data-commons.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${spring-fox.version}</version>
+            </dependency>
             <dependency>
                 <groupId>com.google.code.findbugs</groupId>
                 <artifactId>jsr305</artifactId>

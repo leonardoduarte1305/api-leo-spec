@@ -36,18 +36,18 @@ paths:
       produces:
         - "application/json"
       parameters:
-        - "page"
-          in: "query"
+        - in: "query"
+          name: "page"
           description: "Page number you want to see when the data is fetched."
           required: true
           type: int
-        - "qtd"
-          in: "query"
+        - in: "query"
+          name: "qtd"
           description: "Quantity of results per page."
           required: true
           type: int
-        - "ordination"
-          in: "query"
+        - in: "query"
+          name: "ordination"
           description: "How to order the results: asc or desc"
           required: false
           type: String
@@ -73,15 +73,16 @@ paths:
               schema:
                 $ref: '#/definitions/ErrorResponse'
 
-definitions:
-  Colaborador:
-    type: object
-    properties:
-      nome: string
-  ErrorResponse:
-    type: object
-    properties:
-      message:
-        type: string
+components:
+  schemas:
+    Colaborador:
+      type: object
+      properties:
+        nome: string
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
 
 #TODO finalize

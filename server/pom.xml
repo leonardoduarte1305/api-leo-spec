@@ -14,10 +14,6 @@
 
     <name>api-leo OpenAPI Spec :: Server</name>
 
-    <dependencies>
-
-    </dependencies>
-
     <build>
         <plugins>
             <plugin>
