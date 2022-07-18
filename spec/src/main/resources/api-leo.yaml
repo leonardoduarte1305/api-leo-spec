@@ -26,17 +26,20 @@ paths:
           name: "page"
           description: "Page number you want to see when the data is fetched."
           required: true
-          type: int
+          schema:
+            type: integer
         - in: "query"
           name: "qtd"
           description: "Quantity of results per page."
           required: true
-          type: int
+          schema:
+            type: integer
         - in: "query"
           name: "ordination"
           description: "How to order the results: asc or desc"
           required: false
-          type: String
+          schema:
+            type: string
       responses:
         200:
           description: "OK"
