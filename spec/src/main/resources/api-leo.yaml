@@ -3,12 +3,6 @@ openapi: 3.0.0
 info:
   version: "0.0.1-SNAPSHOT"
   title: Api-Leo
-  description: "This is a simple specification of a business who manages some employees and departments"
-  termsOfService: "http://leoduarte.dev/terms"
-  contact: "leonardoduarte1305@gmail.com"
-  license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 
 tags:
   - name: "Employees"
@@ -16,11 +10,6 @@ tags:
   - name: "Departments"
     description: "Provides enpoints to view and manage Departments"
 
-#host: "leoduarte.dev/business"
-#basePath: "/"
-#schemes:
-#  - "http"
-#  - "https"
 servers:
   - url: "http://127.0.0.1:8080/"
     description: "Local host environment"
@@ -28,13 +17,10 @@ servers:
 paths:
   /colaborador/paginacaoa:
     get:
+      operationId: "listarColaboradores"
       tags:
         - "Employees"
-      summary: "Find all employees"
       description: "Find employees with type A of pagination."
-      operationId: "listarColaboradores"
-      produces:
-        - "application/json"
       parameters:
         - in: "query"
           name: "page"
@@ -59,28 +45,33 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/definitions/Colaborador'
+                  $ref: '#/components/schemas/Colaborador'
         400:
-          description: "Something went wrong with you request"
+          description: "Something went wrong with your request"
           content:
             application/json:
               schema:
-                $ref: '#/definitions/ErrorResponse'
+                $ref: '#/components/schemas/ErrorResponse'
         403:
           description: "The user doesn't have permissions to read"
           content:
             application/json:
               schema:
-                $ref: '#/definitions/ErrorResponse'
+                $ref: '#/components/schemas/ErrorResponse'
 
 components:
   schemas:
     Colaborador:
       type: object
       properties:
-        name: nome
-          description: The employee's name
+        label:
           type: string
+        value:
+          type: string
+      required:
+        - label
+        - value
+
     ErrorResponse:
       type: object
       properties:
