@@ -1,8 +1,8 @@
-openapi: "3.0.0"
+openapi: 3.0.0
 
 info:
   version: "0.0.1-SNAPSHOT"
-  title: "Api-Leo"
+  title: Api-Leo
   description: "This is a simple specification of a business who manages some employees and departments"
   termsOfService: "http://leoduarte.dev/terms"
   contact: "leonardoduarte1305@gmail.com"
@@ -16,11 +16,11 @@ tags:
   - name: "Departments"
     description: "Provides enpoints to view and manage Departments"
 
-host: "leoduarte.dev/business"
-basePath: "/"
-schemes:
-  - "http"
-  - "https"
+#host: "leoduarte.dev/business"
+#basePath: "/"
+#schemes:
+#  - "http"
+#  - "https"
 servers:
   - url: "http://127.0.0.1:8080/"
     description: "Local host environment"
@@ -78,7 +78,9 @@ components:
     Colaborador:
       type: object
       properties:
-        nome: string
+        name: nome
+          description: The employee's name
+          type: string
     ErrorResponse:
       type: object
       properties:
