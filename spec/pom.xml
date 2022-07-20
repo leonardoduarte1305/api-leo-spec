@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>dev.leoduarte</groupId>
+        <groupId>dev.leoduarte.api.leo.spec</groupId>
         <artifactId>api-leo-spec</artifactId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
