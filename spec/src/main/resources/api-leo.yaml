@@ -48,7 +48,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/EmployeeCreation'
+                  $ref: '#/components/schemas/Employee'
 
   /departments/{id}:
     get:
@@ -64,7 +64,7 @@ paths:
               schema:
                 type: object
                 items:
-                  $ref: '#/components/schemas/DepartmentCreation'
+                  $ref: '#/components/schemas/Department'
 
   /departments/all:
     get:
@@ -80,7 +80,7 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: '#/components/schemas/DepartmentCreation'
+                  $ref: '#/components/schemas/Department'
 
   /departments:
     post:
@@ -100,14 +100,13 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/DepartmentCreation'
+                $ref: '#/components/schemas/Department'
         400:
           description: "Something was wrong with the data provided."
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/DepartmentCreationError"
-                #TODO finalize the DepartmentCreationError
+                $ref: "#/components/schemas/ErrorResponse"
 
 components:
   schemas:
