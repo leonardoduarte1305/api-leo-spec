@@ -68,7 +68,7 @@ paths:
 
   /departments/all:
     get:
-      operationId: "getAllDepartments"
+      operationId: "getAll"
       description: "Get all departments."
       tags:
         - Departments
@@ -101,13 +101,56 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Department'
-        400:
-          description: "Something was wrong with the data provided."
+
+    put:
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+      operationId: "updateDepartment"
+      description: "Update the given Department"
+      tags:
+        - Departments
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DepartmentCreation'
+        description: "The department to update."
+      responses:
+        200:
+          description: "Updated"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/ErrorResponse"
+                $ref: '#/components/schemas/Department'
+        404:
+          description: "Department not found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 
+    delete:
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+      operationId: "deleteDepartment"
+      description: "Delete the given Department"
+      tags:
+        - Departments
+      responses:
+        204:
+          description: "OK"
+        404:
+          description: "Department not found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
 components:
   schemas:
     EmployeeProperties:
