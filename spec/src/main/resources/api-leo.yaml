@@ -15,6 +15,107 @@ servers:
     description: "Local host environment"
 
 paths:
+  /employees:
+    get:
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+      operationId: "getById"
+      description: "Find an employee using its id."
+      tags:
+        - Employee
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: object
+                items:
+                  $ref: '#/components/schemas/Employee'
+    post:
+      operationId: "createEmployee"
+      description: "Creates the given employee."
+      tags:
+        - Employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreation'
+        description: "The employee to create."
+      responses:
+        201:
+          description: "Created"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+    put:
+      parameters:
+      - name: id
+        in: path
+        schema:
+          type: integer
+      operationId: "updateEmployee"
+      description: "Update the given employee"
+      tags:
+        - Employee
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeCreation'
+        description: "The employee to update."
+      responses:
+        200:
+          description: "Updated"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+        404:
+          description: "Employee not found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    delete:
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
+      operationId: "deleteEmployee"
+      description: "Delete the given employee"
+      tags:
+        - Employee
+      responses:
+        204:
+          description: "OK"
+        404:
+          description: "Employee not found"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /employees/all:
+    get:
+      operationId: "getAll"
+      description: "Get all employees order alphabetically by department."
+      tags:
+        - Employees
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
   /employees/paginationa:
     get:
       operationId: "listEmployees"
@@ -49,11 +150,17 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Employee'
+# TODO Search how to define the pagination B with pageable
 
-  /departments/{id}:
+  /departments:
     get:
+      parameters:
+        - name: id
+          in: path
+          schema:
+            type: integer
       operationId: "getById"
-      description: "Find a department usint its id."
+      description: "Find a department using its id."
       tags:
         - Departments
       responses:
@@ -65,24 +172,6 @@ paths:
                 type: object
                 items:
                   $ref: '#/components/schemas/Department'
-
-  /departments/all:
-    get:
-      operationId: "getAll"
-      description: "Get all departments."
-      tags:
-        - Departments
-      responses:
-        200:
-          description: "OK"
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Department'
-
-  /departments:
     post:
       operationId: "createDepartment"
       description: "Creates the given department."
@@ -101,7 +190,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Department'
-
     put:
       parameters:
         - name: id
@@ -109,7 +197,7 @@ paths:
           schema:
             type: integer
       operationId: "updateDepartment"
-      description: "Update the given Department"
+      description: "Update the given department"
       tags:
         - Departments
       requestBody:
@@ -131,7 +219,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-
     delete:
       parameters:
         - name: id
@@ -139,7 +226,7 @@ paths:
           schema:
             type: integer
       operationId: "deleteDepartment"
-      description: "Delete the given Department"
+      description: "Delete the given department"
       tags:
         - Departments
       responses:
@@ -151,6 +238,22 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+  /departments/all:
+    get:
+      operationId: "getAll"
+      description: "Get all departments."
+      tags:
+        - Departments
+      responses:
+        200:
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Department'
+
 components:
   schemas:
     EmployeeProperties:
@@ -301,4 +404,3 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
 security:
   - bearerAuth: [ ]
-  #TODO finalize
