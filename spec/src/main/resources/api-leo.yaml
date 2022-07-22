@@ -6,9 +6,9 @@ info:
 
 tags:
   - name: "Employees"
-    description: "Provides enpoints to view and manage Employees"
+    description: "Provides endpoints to view and manage Employees"
   - name: "Departments"
-    description: "Provides enpoints to view and manage Departments"
+    description: "Provides endpoints to view and manage Departments"
 
 servers:
   - url: "http://127.0.0.1:8080/"
